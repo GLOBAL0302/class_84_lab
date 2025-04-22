@@ -3,7 +3,7 @@ const rootPath = __dirname;
 
 const config = {
   rootPath,
-  db: 'mongodb://localhost/playlist',
+  db: 'mongodb://localhost/todoList',
   publicPath: path.join(rootPath, 'public'),
 };
 
