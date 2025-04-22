@@ -18,8 +18,9 @@ const taskSchema = new schema({
     default: null,
   },
   status: {
-    Type: String,
+    type: String,
     enum: ['new', 'in_progress', 'complete'],
+    default: 'new',
   },
 });
 

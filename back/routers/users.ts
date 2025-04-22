@@ -30,7 +30,7 @@ usersRouter.post('/', async (req, res, next) => {
     if (e instanceof Error.ValidationError) {
       res.status(400).send({ error: e });
     }
-    next();
+    next(e);
   }
 });
 
@@ -52,9 +52,10 @@ usersRouter.post('/sessions', async (req, res, next) => {
 
   if (!isMatch) {
     res.status(400).send({ error: 'Password is incorrect' });
+    return;
   }
 
-  user.generateToken();
+  await user.generateToken();
   await user.save();
   res.send({
     username: user.username,
